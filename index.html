@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Binance Trading Bot</title>
+</head>
+<body>
+    <h1>Binance Spot Trading Bot (Testnet)</h1>
+    <form method="post">
+        <label>API Key:</label><br>
+        <input type="text" name="api_key" required><br><br>
+
+        <label>Secret Key:</label><br>
+        <input type="text" name="api_secret" required><br><br>
+
+        <label>Symbol (e.g., BTCUSDT):</label><br>
+        <input type="text" name="symbol"><br><br>
+
+        <label>Side:</label><br>
+        <select name="side">
+            <option value="BUY">BUY</option>
+            <option value="SELL">SELL</option>
+        </select><br><br>
+
+        <label>Quantity:</label><br>
+        <input type="text" name="quantity"><br><br>
+
+        <button name="action" value="market">Place Market Order</button><br><br>
+
+        <label>Stop Price (for stop or OCO):</label><br>
+        <input type="text" name="stop_price"><br><br>
+
+        <label>Limit Price (for OCO):</label><br>
+        <input type="text" name="price"><br><br>
+
+        <label>Stop Limit Price (for OCO):</label><br>
+        <input type="text" name="stop_limit_price"><br><br>
+
+        <button name="action" value="stop">Place Stop Order</button><br><br>
+        <button name="action" value="oco">Place OCO Order</button><br><br>
+        <button name="action" value="info">Get Account Info</button>
+    </form>
+
+    {% if message %}
+    <p style="color: red;">{{ message }}</p>
+    {% endif %}
+
+    {% if result %}
+    <pre>{{ result | tojson(indent=2) }}</pre>
+    {% endif %}
+</body>
+</html>
